@@ -1,0 +1,30 @@
+<div class="jumbotron content-size">
+  <p> To calculate your BMI, provide the data and hit Calculate</p>
+  <form class="form-inline" ng-submit="handleBMIClick(bmiForm)" role="form">
+    <label class="sr-only" for="height">Height</label>
+    <input type="number"
+           name="height"
+           id="height"
+           ng-model="bmiForm.height"
+           required="required"
+           class="form-control mb-2 mr-sm-2 mb-sm-0"
+           placeholder="Your height in cms.">
+
+      <label class="sr-only" for="weight">Weight</label>
+      <input type="number"
+             name="weight"
+             id="weight"
+             ng-model="bmiForm.weight"
+             required="required"
+             class="form-control mb-2 mr-sm-2 mb-sm-0"
+             step="0.01"
+             placeholder="Your weight in kgs.">
+
+    <div class="pt-2">
+
+      <button type="submit" class="btn btn-primary top-spacing">Calculate</button>
+    </div>
+    <p class="top-spacing"> {{category}} </p>
+  </form>
+</div>
+

@@ -32,28 +32,17 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">bodyMass</a>
+            <a class="navbar-brand" ui-sref="welcome">Body Mass Index Calculator</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">BMI</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><div class="btn-group" uib-dropdown is-open="displaySessions">
-                    <button id="single-button" 
-                            type="button" 
-                            class="btn btn-primary" 
-                            uib-dropdown-toggle 
-                            ng-click="displaySessions = !displaySessions">
-                      User <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                      <li role="menuitem"><a href="#">Action</a></li>
-                      <li role="menuitem"><a href="#">Another action</a></li>
-                    </ul>
-                  </div>
-              </li>
+              <li><a ui-sref="bmi" ui-sref-active="active">BMI</a></li>
+              <li><a ui-sref="about" ui-sref-active="active">About</a></li>
+              <li><a ui-sref="sign_in" ui-sref-active="active" ng-if="!user.signedIn">Login</a></li>
+              <li><a ui-sref="sign_up" ui-sref-active="active" ng-if="!user.signedIn">Sign up</a></li>
+              <li><a ui-sref="welcome" ng-if="user.signedIn" ng-click="signOut()">Sign out</a></li>
             </ul>
           </div>
         </div>
@@ -63,13 +52,6 @@
     <div class="container">
     <div ng-view=""></div>
     </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -90,19 +72,22 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-cookie/angular-cookie.js"></script>
     <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/calculator.js"></script>
         <script src="scripts/services/bodymass.js"></script>
+        <script src="scripts/services/alerts.js"></script>
         <!-- endbuild -->
+  <div class="alert-size" uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="alert.close()">{{ alert.msg }}</div>
+  <ui-view></ui-view>        
 </body>
 </html>

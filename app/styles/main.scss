@@ -89,3 +89,23 @@ body {
     border-bottom: 0;
   }
 }
+
+.top-spacing {
+  margin-top: 15px;
+}
+
+.active { 
+  background-color: lightgrey; 
+  font-weight: bolder; 
+}
+
+.content-size {
+  width: 60%;
+  margin: 0 auto;
+  padding: 2% 10% 2% 10%;
+}
+
+.alert-size {
+  width: 60%;
+  margin: 0 auto;  
+}
