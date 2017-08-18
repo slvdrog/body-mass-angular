@@ -24,7 +24,8 @@
 
       <button type="submit" class="btn btn-primary top-spacing">Calculate</button>
     </div>
-    <p class="top-spacing"> {{category}} </p>
+    <p class="top-spacing" ng-if="bmi"> Your BMI is {{bmi}} </p>
+    <p class="top-spacing" ng-if="category"> You are in the <b>{{category}}</b> category. </p>
   </form>
 </div>
 
